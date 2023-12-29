@@ -1,23 +1,24 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Google Play Developer get latest Version Code'
+description: 'This gets the latest version code of the latest bundle uploaded to Google Play. This can also get the latest version of a track. This uses a google service account to perform this operations.'
+author: 'Luís Duarte (LuisDuarte1)'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'play'
+  color: 'blue'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  google_service_account_json:
+    description: 'The service account json content.'
     required: true
-    default: '1000'
+  package_name:
+    description: 'Google Play package name of the app'
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  latest_version_code:
+    description: 'Latest version_code'
 
 runs:
   using: node20
