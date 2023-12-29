@@ -14,12 +14,17 @@ inputs:
     required: true
   package_name:
     description: 'Google Play package name of the app'
+    required: true
+  track:
+    description: 'Track to get the latest version string from'
+    required: false
 
 # Define your outputs here.
 outputs:
   latest_version_code:
     description: 'Latest version_code'
-
+  latest_version_name:
+    description: 'Latest version name of a specific track. In order to work you must provide the track as an input'
 runs:
   using: node20
   main: dist/index.js

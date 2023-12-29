@@ -57,6 +57,33 @@ export async function run(): Promise<void> {
 
     const lastBundle = bundles.at(-1)
     core.setOutput('latest_version_code', lastBundle?.versionCode)
+
+    const track = core.getInput('track')
+    if (track !== '') {
+      const tracksReq = await androidDevelopersAPI.edits.tracks.list({
+        packageName,
+        editId
+      })
+
+      const tracks = tracksReq.data.tracks
+
+      if (tracks === undefined || bundles.length === 0) {
+        throw Error(
+          `The API did not return the list of tracks. Response Status: ${createEditReq.status}. It's maybe possible that you still don't have active tracks in the Google Play Console.`
+        )
+      }
+      const trackObj = tracks.filter(obj => obj.track === track).at(0) //is there only one active release always?
+
+      if (trackObj === undefined) {
+        throw Error(
+          `Could not find the ${track} track in the returned list of tracks.`
+        )
+      }
+
+      core.setOutput('latest_version_name', trackObj.releases?.at(0)?.name)
+    }
+
+    await androidDevelopersAPI.edits.delete({ editId, packageName })
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
