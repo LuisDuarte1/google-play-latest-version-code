@@ -1,5 +1,5 @@
 name: 'Google Play Developer get latest Version Code'
-description: 'This gets the latest version code of the latest bundle uploaded to Google Play. This can also get the latest version of a track. This uses a google service account to perform this operations.'
+description: 'This gets the latest version code of the latest bundle uploaded to Google Play.'
 author: 'Luís Duarte (LuisDuarte1)'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
