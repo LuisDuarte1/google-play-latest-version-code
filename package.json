@@ -1,7 +1,7 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
-  "version": "0.1.0",
+  "name": "google-play-latest-version-code",
+  "description": "It uses the Google Play Developers API to get the latest version code (independent of track) and latest version of track",
+  "version": "0.2.0",
   "author": "",
   "private": true,
   "homepage": "https://github.com/actions/typescript-action",
